@@ -60,18 +60,18 @@ print(f'可信度: {confidence}')
 
 # 示例图片
 
-**参考例图**
-
 包括且不限于以下类型的滑块图片检测
-- 示例图1
-![Example Image 1](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png)
-- 示例图2
-![Example Image 2](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png)
-- 示例图3
-![Example Image 3](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png)
-- 示例图4
-![Example Image 4](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png)
- 
+
+<p>示例图1</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" alt="captcha" width="320">
+<p>示例图2</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" alt="captcha" width="320">
+<p>示例图3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" alt="captcha" width="320">
+<p>示例图4</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" alt="captcha" width="320">
+
+
 
 
 

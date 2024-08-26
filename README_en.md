@@ -62,15 +62,14 @@ The notch box coordinate is the distance between the top left corner and the bot
 
 Includes, but is not limited to, the following types
 
-- example 1
-![Example Image 1](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png)
-- example 2
-![Example Image 2](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png)
-- example 3
-![Example Image 3](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png)
-- example 4
-![Example Image 4](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png)
- 
+<p>example 1</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" alt="captcha" width="320">
+<p>example 2</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" alt="captcha" width="320">
+<p>example 3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" alt="captcha" width="320">
+<p>example 4</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" alt="captcha" width="320">
 
 
 
