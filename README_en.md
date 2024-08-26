@@ -14,9 +14,11 @@ MIT license
 
 # Version Requirements
 
-* `Python`` >=  3.8.0
+* ``Python`` >=  3.8.0
 * ``ultralytics`` >=  8.0.0
 * ``torch`` >=  1.8.0
+* ``onnxruntime``
+* ``onnx``
 
 * Works on Linux, Windows, macOS
 
@@ -60,9 +62,13 @@ The notch box coordinate is the distance between the top left corner and the bot
 
 Includes, but is not limited to, the following types
 
+- example 1
 ![Example Image 1](/example_demo/example1.png)
+- example 2
 ![Example Image 2](/example_demo/example2.png)
+- example 3
 ![Example Image 3](/example_demo/example3.png)
+- example 4
 ![Example Image 4](/example_demo/example4.png)
  
 

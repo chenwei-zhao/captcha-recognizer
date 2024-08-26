@@ -15,9 +15,11 @@ MIT license
 
 # 版本要求
 
-* `Python`` >=  3.8.0
+* ``Python`` >=  3.8.0
 * ``ultralytics`` >=  8.0.0
 * ``torch`` >=  1.8.0
+* ``onnxruntime``
+* ``onnx``
 
 * Works on Linux, Windows, macOS
 
@@ -61,10 +63,13 @@ print(f'可信度: {confidence}')
 **参考例图**
 
 包括且不限于以下类型的滑块图片检测
-
+- 示例图1
 ![Example Image 1](/example_demo/example1.png)
+- 示例图2
 ![Example Image 2](/example_demo/example2.png)
+- 示例图3
 ![Example Image 3](/example_demo/example3.png)
+- 示例图4
 ![Example Image 4](/example_demo/example4.png)
  
 

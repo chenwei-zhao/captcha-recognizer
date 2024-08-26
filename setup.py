@@ -16,7 +16,7 @@ def read_requirements(filename):
 
 setup(
     name='captcha-recognizer',
-    version='0.1.0',
+    version='0.1.1',
     description='通用的滑块验证码识别工具 (Universal Slider Captcha Recognition Tool)',
     long_description=read_file("README.md") + "\n\n" + read_file("HISTORY.md"),
     url="https://github.com/chenwei-zhao/captcha-recognizer",
