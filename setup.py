@@ -19,6 +19,7 @@ setup(
     version='0.1.1',
     description='通用的滑块验证码识别工具 (Universal Slider Captcha Recognition Tool)',
     long_description=read_file("README.md") + "\n\n" + read_file("HISTORY.md"),
+    long_description_content_type="text/markdown",
     url="https://github.com/chenwei-zhao/captcha-recognizer",
     author='Zhao Chenwei',
     author_email='chenwei.zhaozhao@gmail.com',
