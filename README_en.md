@@ -64,12 +64,26 @@ Includes, but is not limited to, the following types
 
 <p>example 1</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" alt="captcha" width="320">
+<p>predict 1</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict1.png" alt="captcha" width="320">
+
+
 <p>example 2</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" alt="captcha" width="320">
+<p>predict 2</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict2.png" alt="captcha" width="320">
+
+
 <p>example 3</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" alt="captcha" width="320">
+<p>predict 3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict3.png" alt="captcha" width="320">
+
+
 <p>example 4</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" alt="captcha" width="320">
+<p>predict 3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict4.png" alt="captcha" width="320">
 
 
 

@@ -64,14 +64,25 @@ print(f'可信度: {confidence}')
 
 <p>示例图1</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" alt="captcha" width="320">
+<p>效果图1</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict1.png" alt="captcha" width="320">
+
 <p>示例图2</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" alt="captcha" width="320">
+
+<p>效果图2</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict2.png" alt="captcha" width="320">
+
 <p>示例图3</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" alt="captcha" width="320">
+<p>效果图3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict3.png" alt="captcha" width="320">
+
+
 <p>示例图4</p>
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" alt="captcha" width="320">
-
-
+<p>效果图4</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict4.png" alt="captcha" width="320">
 
 
 
