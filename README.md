@@ -64,13 +64,13 @@ print(f'可信度: {confidence}')
 
 包括且不限于以下类型的滑块图片检测
 - 示例图1
-![Example Image 1](/example_demo/example1.png)
+![Example Image 1](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png)
 - 示例图2
-![Example Image 2](/example_demo/example2.png)
+![Example Image 2](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png)
 - 示例图3
-![Example Image 3](/example_demo/example3.png)
+![Example Image 3](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png)
 - 示例图4
-![Example Image 4](/example_demo/example4.png)
+![Example Image 4](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png)
  
 
 

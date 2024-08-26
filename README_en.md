@@ -63,13 +63,13 @@ The notch box coordinate is the distance between the top left corner and the bot
 Includes, but is not limited to, the following types
 
 - example 1
-![Example Image 1](/example_demo/example1.png)
+![Example Image 1](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png)
 - example 2
-![Example Image 2](/example_demo/example2.png)
+![Example Image 2](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png)
 - example 3
-![Example Image 3](/example_demo/example3.png)
+![Example Image 3](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png)
 - example 4
-![Example Image 4](/example_demo/example4.png)
+![Example Image 4](https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png)
  
 
 
