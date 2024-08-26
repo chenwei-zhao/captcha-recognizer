@@ -1,1 +1,6 @@
 include captcha_recognizer/models/*
+include HISTORY.md
+include README.md
+include README_en.md
+include LICENSE
+include requirements.txt
