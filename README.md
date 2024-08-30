@@ -86,3 +86,12 @@ print(f'可信度: {confidence}')
 
 
 
+# 项目维护
+
+- 本项目长期维护。
+- 如果您有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
+- 如果您遇到本项目不能识别的滑块验证码，欢迎提issue，我会尽快解决。
+
+# 更多联系方式
+- Gmail: chenwei.zhaozhao@gmail.com
+- 163/网易: https://mail.163.com/

@@ -1,6 +1,10 @@
 
 # History
 
+0.1.4 (2024-08-30)
+* Handle the case where the result is empty
+* Split workflow to two jobs
+
 0.1.3 (2024-08-26)
 
 * Optimize example image css in README

@@ -34,7 +34,11 @@ class Recognizer(metaclass=SingletonMeta):
             return results[0]
 
     def identify_gap(self, source, **kwargs):
+        box = []
+        conf = 0
         results = self.predict(source=source, **kwargs)
+        if not len(results):
+            return box, conf
 
         box_with_max_conf = max(results, key=lambda x: x.boxes.conf.max())
 
