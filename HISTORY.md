@@ -1,5 +1,7 @@
 
 # History
+0.1.5 (2024-09-06)
+* Compress sample picture
 
 0.1.4 (2024-08-30)
 * Handle the case where the result is empty
