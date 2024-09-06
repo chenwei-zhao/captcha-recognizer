@@ -61,54 +61,52 @@ print(f'可信度: {confidence}')
 
 # 示例图片
 
-包括且不限于以下类型的滑块图片检测
-
-<p>示例图1</p>
-<img 
-  src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png" 
-  alt="captcha" 
-  width="320"
->
-<p>效果图1</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png" 
-  alt="captcha" 
-  width="320"
->
-
-<p>示例图2</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png" 
-  alt="captcha"
-  width="320"
->
-
-<p>效果图2</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png"
-  alt="captcha"
-  width="320"
->
-
-<p>示例图3</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example3.png" 
-  alt="captcha"
-  width="320"
->
-<p>效果图3</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png" 
-  alt="captcha"
-  width="320"
->
+包括且不限于以下类型、尺寸的滑块图片检测
 
 
-<p>示例图4</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example4.png" 
-  alt="captcha"
-  width="320"
->
-<p>效果图4</p>
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png" 
-  alt="captcha"
-  width="320"
->
+示例图1
+
+尺寸 552*344
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png)
+
+效果图1
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png)
+
+
+示例图2
+
+尺寸 260*160
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png)
+
+效果图2
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png)
+
+
+示例图3
+
+尺寸 400*200
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example3.png)
+
+效果图3
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png)
+
+
+示例图4
+
+尺寸 672*390
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example4.png)
+
+效果图4
+
+![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png)
+
 
 
 # 遇到问题
