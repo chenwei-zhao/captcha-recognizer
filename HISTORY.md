@@ -1,5 +1,9 @@
 
 # History
+
+0.1.6 (2024-09-06)
+* Update README
+
 0.1.5 (2024-09-06)
 * Compress sample picture
 
