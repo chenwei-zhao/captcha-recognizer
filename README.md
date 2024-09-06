@@ -43,7 +43,8 @@ pip install captcha-recognizer
 from captcha_recognizer.recognizer import Recognizer
 
 # source传入图片路径
-box, confidence = Recognizer().identify_gap(source='example_demo/example1.png', verbose=False)
+recognizer = Recognizer()
+box, confidence = recognizer.identify_gap(source='your_example_image.png',)
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -63,27 +64,67 @@ print(f'可信度: {confidence}')
 包括且不限于以下类型的滑块图片检测
 
 <p>示例图1</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" alt="captcha" width="320">
+<img 
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" 
+  alt="captcha" 
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png'"
+>
 <p>效果图1</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict1.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict1.png" 
+  alt="captcha" 
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png'"
+>
 
 <p>示例图2</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" 
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png'"
+>
 
 <p>效果图2</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict2.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict2.png"
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png'"
+>
 
 <p>示例图3</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" 
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example3.png'"
+>
 <p>效果图3</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict3.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict3.png" 
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png'"
+>
 
 
 <p>示例图4</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" 
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example4.png'"
+>
 <p>效果图4</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict4.png" alt="captcha" width="320">
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict4.png" 
+  alt="captcha"
+  width="320"
+  onerror="this.src = 'https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png'"
+>
 
+
+# 遇到问题
+- Error loading “xxx\Lib\site-packages\torch\lib\fbgemm.dll” or one of its dependencies.
+  - 参考 [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
+- Model Unsupported model IR version: 9, max supported IR version: 8
+    - 参考 [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
+    
 
 
 # 项目维护
