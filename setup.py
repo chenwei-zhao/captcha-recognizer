@@ -16,7 +16,7 @@ def read_requirements(filename):
 
 setup(
     name='captcha-recognizer',
-    version='0.2.0',
+    version='0.2.1',
     description='Universal Slider Captcha Recognition Tool (通用的滑块验证码识别工具)',
     long_description=read_file("README.md") + "\n\n" + read_file("HISTORY.md"),
     long_description_content_type="text/markdown",

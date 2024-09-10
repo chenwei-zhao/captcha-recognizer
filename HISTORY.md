@@ -1,5 +1,7 @@
 
 # History
+0.2.1 (2024-09-10)
+* Fix example image link
 
 0.2.0 (2024-09-10)
 * Improve the captcha compatibility of the library
