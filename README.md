@@ -1,4 +1,4 @@
-简体中文 | [English](README_en.md)
+简体中文 | [English](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/README_en.md)
 
 # Captcha-Recognizer
 
@@ -42,9 +42,9 @@ pip install captcha-recognizer
 
 from captcha_recognizer.recognizer import Recognizer
 
-# source传入图片路径
+# source传入图片路径, verbose=False表示关闭冗余输出
 recognizer = Recognizer()
-box, confidence = recognizer.identify_gap(source='your_example_image.png',)
+box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -64,48 +64,78 @@ print(f'可信度: {confidence}')
 包括且不限于以下类型、尺寸的滑块图片检测
 
 
-示例图1
+<p>示例图 1</p>
+<p>尺寸 552*344</p>
+<img 
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example1.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png"
+>
+<p>识别效果示例图 1</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict1.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png"
+>
 
-尺寸 552*344
+<p>示例图 2</p>
+<p>尺寸 260*160</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example2.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png"
+>
 
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png)
+<p>识别效果示例图 2</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict2.png"
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png"
+>
 
-效果图1
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png)
-
-
-示例图2
-
-尺寸 260*160
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png)
-
-效果图2
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png)
-
-
-示例图3
-
-尺寸 400*200
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example3.png)
-
-效果图3
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png)
+<p>示例图 3</p>
+<p>尺寸 400*200</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example3.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png"
+>
+<p>识别效果示例图3</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict3.png"
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png"
+>
 
 
-示例图4
+<p>示例图 4</p>
+<p>尺寸 672*390</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example4.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example4.png"
+>
+<p>识别效果示例图4</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict4.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png"
+>
 
-尺寸 672*390
+<p>示例图 5</p>
+<p>尺寸 280*155</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example5.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example5.png"
+>
+<p>识别效果示例图 5</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict5.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict5.png"
+>
 
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example4.png)
+<p>示例图 6</p>
+<p>尺寸 590*360</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example6.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example6.png"
+>
+<p>识别效果示例图 6</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict6.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict6.png"
+>
 
-效果图4
-
-![验证码](https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png)
+<p>示例图 7</p>
+<p>尺寸 320*160</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/example7.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example7.png"
+>
+<p>识别效果示例图 7</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/example_demo/predict7.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict7.png"
+>
 
 
 

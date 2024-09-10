@@ -1,6 +1,9 @@
 
 # History
 
+0.2.0 (2024-09-10)
+* Improve the captcha compatibility of the library
+
 0.1.6 (2024-09-06)
 * Update README
 

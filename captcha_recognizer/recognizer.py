@@ -26,7 +26,7 @@ class Recognizer(metaclass=SingletonMeta):
         results = self.model.predict(
             source=source,
             device='cpu',
-            imgsz=[512, 512],
+            imgsz=[480, 480],
             classes=[0],
             **kwargs
         )
