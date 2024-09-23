@@ -1,5 +1,8 @@
 
 # History
+0.3.0 (2024-09-23)
+* 支持截图类型的验证码识别 (Screenshot support)
+
 0.2.1 (2024-09-10)
 * Fix example image link
 

@@ -36,7 +36,7 @@ pip install captcha-recognizer
 
 # Usage
 
-
+## Background image recognition
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
@@ -56,6 +56,20 @@ Origin of coordinates: top left corner of the picture
 The notch box coordinate is the distance between the top left corner and the bottom right corner of the notch box and the origin of the coordinate
 """
 ```
+
+## Screenshot recognition
+
+```python
+from captcha_recognizer.recognizer import Recognizer
+recognizer = Recognizer()
+
+box, confidence = recognizer.identify_screenshot(source='<image obj>', verbose=False, show_result=True)
+
+print(f'Gap coordinate: {box}')
+print(f'Confidence: {confidence}')
+
+```
+
 
 # Sample slider picture
 
