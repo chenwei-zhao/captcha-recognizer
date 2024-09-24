@@ -179,18 +179,19 @@ print(f'可信度: {confidence}')
 某些种类的滑块验证码，滑块初始位置存在一定偏移，以下面图中的滑块初始位置为例：
 
 <p>示例图 9</p>
-
 <img 
-  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/offset2.png" 
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/offset2.png"
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/offset2.png"
 >
 
+
+
 如示例图9中：
-第一条黑线位置为滑块初始位置，距离图片边框有大概有8个像素的偏移量（offset为8）
-识别结果的缺口坐标为 [x1, y1, x2, y2] 对应缺口的左上角和右下角坐标（坐标原点为图片左上角）
-第二条黑线的X轴坐标值对应缺口识别结果左上角的X轴坐标值，此处值为154（x1为154）
-因此实际滑块的偏移量为 x1-offset (154-8=146)
-也就是说，实际的滑块偏移量为缺口的x1值减去滑块距离图片边框的偏移量(offset)
+- 第一条黑线位置为滑块初始位置，距离图片边框有大概有8个像素的偏移量（offset为8）
+- 识别结果的缺口坐标为 [x1, y1, x2, y2] 对应缺口的左上角和右下角坐标（坐标原点为图片左上角）
+- 第二条黑线的X轴坐标值对应缺口识别结果左上角的X轴坐标值，此处值为154（x1为154）
+- 因此实际滑块的偏移量为 x1-offset (154-8=146)
+- 也就是说，实际的滑块偏移量为缺口的x1值减去滑块距离图片边框的偏移量(offset)
 
 ## 图片识别耗时
 首次识别耗时较长（2s左右），后续单张图片的识别在60ms（60毫秒）左右
