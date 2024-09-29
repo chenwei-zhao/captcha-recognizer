@@ -23,18 +23,19 @@ MIT license
 * Works on Linux, Windows, macOS
 
 
-# Install
+# Usage
 
+- [HTTP API](https://github.com/chenwei-zhao/captcha-api)
+- From Pypi
 
-From pip 
+## HTTP API
+[HTTP API](https://github.com/chenwei-zhao/captcha-api)
 
+## From Pypi
 ```bash
 pip install captcha-recognizer
 ```
 
-
-
-# Usage
 
 ## Background image recognition
 ```Python

@@ -21,10 +21,19 @@ Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深�
 * Works on Linux, Windows, macOS
 
 
-# 安装
+# 使用方式
 
+- HTTP API
+- Pypi
 
-From pip 
+## HTTP API
+
+文档请移步: [captcha-api](https://github.com/chenwei-zhao/captcha-api)
+
+## Pypi
+
+### 从 Pypi 安装
+
 
 ```bash
 pip install captcha-recognizer
@@ -32,9 +41,7 @@ pip install captcha-recognizer
 
 
 
-# 使用示例
-
-## 单缺口/多缺口验证码识别
+### 单缺口/多缺口验证码识别
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
@@ -56,7 +63,7 @@ print(f'可信度: {confidence}')
 """
 ```
 
-## 单缺口/多缺口验证码示例图片
+### 单缺口/多缺口验证码示例图片
 
 包括且不限于以下类型、尺寸的滑块图片检测
 
@@ -136,7 +143,7 @@ print(f'可信度: {confidence}')
 
 
 
-## 验证码截图识别
+### 验证码截图识别
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
@@ -158,7 +165,7 @@ print(f'可信度: {confidence}')
 """
 ```
 
-## 验证码截图识别示例
+### 验证码截图识别示例
 
 包括且不限于以下类型、尺寸的滑块验证码截图
 
