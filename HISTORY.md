@@ -1,5 +1,7 @@
 
 # History
+0.3.3 (2024-09-29)
+* 添加HTTP API文档链接 (Add HTTP API docs link)
 
 0.3.2 (2024-09-24)
 * 修复图片链接错误 (Fix image link)

@@ -23,7 +23,7 @@ Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深�
 
 # 使用方式
 
-- HTTP API
+- [HTTP API](https://github.com/chenwei-zhao/captcha-api)
 - Pypi
 
 ## HTTP API
