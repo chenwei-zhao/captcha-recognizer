@@ -1,5 +1,8 @@
 
 # History
+0.4.0 (2024-10-10)
+* 增强模型泛化能力 (Enhance model generalization)
+
 0.3.3 (2024-09-29)
 * 添加HTTP API文档链接 (Add HTTP API docs link)
 
