@@ -1,6 +1,6 @@
 from captcha_recognizer.recognizer import Recognizer
 
-# 单缺口、多缺口验证码背景图识别
+# 1. 单缺口、多缺口验证码背景图识别
 # source传入图片路径或图片对象
 # verbose=False表示关闭冗余输出
 # show_result 为True展示识别效果图 (生产环境请设置show_result=False)
@@ -20,7 +20,7 @@ print(f'可信度: {confidence}')
 """
 
 
-# 验证码截图识别
+# 2. 验证码截图识别
 # source传入图片路径或图片对象
 # verbose=False表示关闭冗余输出
 # show_result 为True展示识别效果图 (生产环境请设置show_result=False)
@@ -34,7 +34,13 @@ print(f'可信度: {confidence}')
 缺口坐标: [332.2833251953125, 55.69723129272461, 422.9914245605469, 162.34860229492188]
 可信度: 0.9590587019920349
 
-坐标原点：图片左上角
-缺口方框坐标为缺口方框左上角和右下角距离坐标原点的距离
+# """
 
-"""
+# 3. 基于验证码截图识别滑块距离
+# source传入图片路径或图片对象
+# verbose=False表示关闭冗余输出
+# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
+recognizer = Recognizer()
+distance = recognizer.identify_distance_by_screenshot(source='img.png', verbose=False, show_result=True)
+
+print('滑块距离', distance)

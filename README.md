@@ -41,12 +41,14 @@ pip install captcha-recognizer
 
 
 
-### 单缺口/多缺口验证码识别
+### 基于单缺口/多缺口验证码背景图识别滑块缺口
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
 
 # source传入图片路径, verbose=False表示关闭冗余输出
+# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
+# save 为True保存识别结果图 （生产环境请设置save=False)
 recognizer = Recognizer()
 box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
 
@@ -63,7 +65,7 @@ print(f'可信度: {confidence}')
 """
 ```
 
-### 单缺口/多缺口验证码示例图片
+### 基于单缺口/多缺口验证码背景图识别滑块缺口的示例图片
 
 包括且不限于以下类型、尺寸的滑块图片检测
 
@@ -143,12 +145,14 @@ print(f'可信度: {confidence}')
 
 
 
-### 验证码截图识别
+### 基于验证码截图的识别滑块缺口
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
 
 # source传入图片路径, verbose=False表示关闭冗余输出
+# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
+# save 为True保存识别结果图 （生产环境请设置save=False)
 recognizer = Recognizer()
 box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
 
@@ -165,7 +169,7 @@ print(f'可信度: {confidence}')
 """
 ```
 
-### 验证码截图识别示例
+### 基于验证码截图的滑块识别滑块缺口示例
 
 包括且不限于以下类型、尺寸的滑块验证码截图
 
@@ -180,6 +184,23 @@ print(f'可信度: {confidence}')
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict8.png" 
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict8.png"
 >
+
+### 基于验证码截图识别滑块距离
+
+```python3
+from captcha_recognizer.recognizer import Recognizer
+
+# source传入图片路径或图片对象
+# verbose=False表示关闭冗余输出
+# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
+# save 为True保存识别结果图 （生产环境请设置save=False)
+recognizer = Recognizer()
+distance = recognizer.identify_distance_by_screenshot(source='your_screenshot.jpg')
+
+print('滑块距离', distance)
+```
+
+
 
 # 注意事项
 ## 偏移量
@@ -218,7 +239,7 @@ print(f'可信度: {confidence}')
 
 
 
-# 遇到问题
+# 安装过程中遇到问题
 - Error loading “xxx\Lib\site-packages\torch\lib\fbgemm.dll” or one of its dependencies.
   - 参考 [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
 - Model Unsupported model IR version: 9, max supported IR version: 8
@@ -228,9 +249,10 @@ print(f'可信度: {confidence}')
 
 # 项目维护
 
+- 如果你对本项目感兴趣，欢迎star。
 - 本项目长期维护。
-- 如果您有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
-- 如果您遇到本项目不能识别的滑块验证码，欢迎提issue，我会尽快解决。
+- 如果你遇到本项目不能识别的滑块验证码，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
+- 如果有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
 
 # 更多联系方式
 - Gmail: chenwei.zhaozhao@gmail.com
