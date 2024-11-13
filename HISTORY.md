@@ -1,5 +1,7 @@
 
 # 版本历史
+0.6.0 (2024-11-13)
+* 增强模型泛化能力 (Enhance model generalization)
 
 0.5.0 (2024-11-06)
 * 新增功能：基于验证码截图识别滑块距离 (Added support for recognizing the distance of the sliding block in screenshot)
