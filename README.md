@@ -265,11 +265,16 @@ print('滑块距离', distance)
 # 许可证
 MIT license
 
-# 感谢支持
+# 感谢你的支持
 
-## 感谢Star
+## Stargazers
 
 [![Stargazers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/stars/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/stargazers)
 
-## 感谢Fork
+## Forkers
 [![Forkers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/forks/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/network/members)
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=chenwei-zhao/captcha-recognizer&type=Date)](https://star-history.com/#chenwei-zhao/captcha-recognizer&Date)
