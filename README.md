@@ -250,9 +250,9 @@ print('滑块距离', distance)
 # 项目维护
 
 - 如果你对本项目感兴趣，欢迎star。
-- 本项目长期维护。
+- 项目长期维护。
 - 如果你遇到本项目不能识别的滑块验证码，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
-- 如果有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
+- 有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
 
 # 更多联系方式
 - Gmail: chenwei.zhaozhao@gmail.com
@@ -264,3 +264,12 @@ print('滑块距离', distance)
 
 # 许可证
 MIT license
+
+# 感谢支持
+
+## 感谢Star
+
+[![Stargazers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/stars/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/stargazers)
+
+## 感谢Fork
+[![Forkers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/forks/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/network/members)
