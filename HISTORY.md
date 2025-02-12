@@ -1,5 +1,9 @@
 
 # 版本历史
+
+0.7.0 (2025-02-12)
+* 优化滑块截图的识别逻辑 (Optimize the logic of sliding block screenshot recognition)
+
 0.6.0 (2024-11-13)
 * 增强模型泛化能力 (Enhance model generalization)
 
