@@ -1,5 +1,7 @@
 
 # 版本历史
+0.7.1 (2025-03-24)
+* 提交兼容性 (Compatibility)
 
 0.7.0 (2025-02-12)
 * 优化滑块截图的识别逻辑 (Optimize the logic of sliding block screenshot recognition)

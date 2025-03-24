@@ -5,6 +5,8 @@ from typing import Union
 import numpy as np
 from ultralytics import YOLO
 
+DEFAULT_CONF = 0.25
+
 
 class SingletonMeta(type):
     _instances = {}
@@ -41,10 +43,10 @@ class Recognizer(metaclass=SingletonMeta):
 
     def identify_gap(self, source, show_result=False, **kwargs):
         box = []
-        conf = 0
-        results = self.predict(model=self.multi_cls_model, source=source, classes=[0], **kwargs)
+        box_conf = 0
+        results = self.predict(model=self.multi_cls_model, source=source, classes=[0], conf=DEFAULT_CONF, **kwargs)
         if not len(results):
-            return box, conf
+            return box, box_conf
 
         box_with_max_conf = max(results, key=lambda x: x.boxes.conf.max())
         if show_result:
