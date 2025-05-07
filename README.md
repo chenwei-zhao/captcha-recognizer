@@ -3,6 +3,11 @@
 # Captcha-Recognizer
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
+# DeepWiki文档
+[点击此处进入DeepWiki文档](https://deepwiki.com/chenwei-zhao/captcha-recognizer)
+
+DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目。
+
 
 # 支持的验证码类型
 - 单缺口验证码背景图
