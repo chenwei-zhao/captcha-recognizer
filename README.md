@@ -278,3 +278,11 @@ MIT license
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chenwei-zhao/captcha-recognizer&type=Date)](https://star-history.com/#chenwei-zhao/captcha-recognizer&Date)
+
+## 捐赠
+- 感谢支持开源项目
+- 如果项目有帮助到您，可以选择捐赠一些费用，帮助项目持续更新。
+
+![https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg](https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg "微信")
+
+![https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg](https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg "支付宝")
