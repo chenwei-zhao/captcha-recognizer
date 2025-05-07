@@ -283,6 +283,9 @@ MIT license
 - 感谢支持开源项目
 - 如果项目有帮助到您，可以选择捐赠一些费用，帮助项目持续更新。
 
-![https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg](https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg "微信")
 
-![https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg](https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg "支付宝")
+<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg" width="168" alt="微信支付">
+
+<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg" width="168" alt="支付宝支付">
+
+
