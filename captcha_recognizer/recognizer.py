@@ -41,10 +41,29 @@ class Recognizer(metaclass=SingletonMeta):
             return results[0]
         return []
 
-    def identify_gap(self, source, show_result=False, **kwargs):
+    def identify_gap(self, source, show_result=False, is_single=False, conf=DEFAULT_CONF,  **kwargs):
+        """
+        识别给定图片的缺口。
+
+        参数:
+        - source: 图片源。
+        - show_result: 布尔值，指示是否展示识别结果，默认为False。
+        - is_single: 布尔值，指示是否为单缺口图片。
+        - **kwargs: 其他传递给预测函数的参数。
+
+        返回:
+        - box: 一个列表，包含具有最高置信度的间隙的边界框坐标。
+        - box_conf: 浮点数，代表间隙的置信度。
+        """
+        if is_single:
+            model = self.single_cls_model
+            classes = None
+        else:
+            model = self.multi_cls_model
+            classes = [0]
+        results = self.predict(model=model, source=source, classes=classes, conf=conf, **kwargs)
         box = []
         box_conf = 0
-        results = self.predict(model=self.multi_cls_model, source=source, classes=[0], conf=DEFAULT_CONF, **kwargs)
         if not len(results):
             return box, box_conf
 
