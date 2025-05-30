@@ -1,5 +1,8 @@
 
 # 版本历史
+0.7.2 (2025-05-30)
+* 优化单缺口图片的识别逻辑 (Optimize the logic of single-gap image recognition)
+
 0.7.1 (2025-03-24)
 * 提交兼容性 (Compatibility)
 
