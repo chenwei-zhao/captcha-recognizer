@@ -54,6 +54,7 @@ from captcha_recognizer.recognizer import Recognizer
 # source传入图片路径, verbose=False表示关闭冗余输出
 # show_result 为True展示识别效果图 (生产环境请设置show_result=False)
 # save 为True保存识别结果图 （生产环境请设置save=False)
+# is_single 默认为False表示支持多缺口背景图识别，is_single=True表示仅支持单缺口背景图识别（指定is_single为True时，对单缺口背景图识别准确度更高）
 recognizer = Recognizer()
 box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
 
@@ -159,7 +160,7 @@ from captcha_recognizer.recognizer import Recognizer
 # show_result 为True展示识别效果图 (生产环境请设置show_result=False)
 # save 为True保存识别结果图 （生产环境请设置save=False)
 recognizer = Recognizer()
-box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
+box, confidence = recognizer.identify_screenshot(source='your_example_image.png', verbose=False)
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')

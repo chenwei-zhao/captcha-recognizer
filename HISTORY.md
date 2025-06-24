@@ -1,5 +1,9 @@
 
 # 版本历史
+
+0.7.3 (2025-06-24)
+* 修复README中示例错误 (Fix README example error)
+
 0.7.2 (2025-05-30)
 * 优化单缺口图片的识别逻辑 (Optimize the logic of single-gap image recognition)
 
