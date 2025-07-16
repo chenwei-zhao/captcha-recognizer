@@ -1,5 +1,8 @@
 
 # 版本历史
+0.8.0-beta (2025-07-16)
+* 依赖最小化 (Dependency Minimization)
+* 将ultralytics库替换为cv2
 
 0.7.3 (2025-06-24)
 * 修复README中示例错误 (Fix README example error)

@@ -17,13 +17,22 @@ DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目�
 
 # 版本要求
 
-* ``Python`` >=  3.8.0
-* ``ultralytics`` >=  8.0.0
-* ``torch`` >=  1.8.0
-* ``onnxruntime``
-* ``onnx``
+* ``Python`` >=  3.6.0
+* ``opencv-python``
 
-* Works on Linux, Windows, macOS
+## opencv-python与numpy的兼容性
+兼容的版本1：
+opencv-python==4.12.0.88
+numpy==2.2.6
+
+兼容版本2：
+opencv-python==4.6.0.66
+numpy==1.24.4
+
+更多兼容的版本请自行尝试
+
+
+* Works on Linux, Windows, MacOS
 
 
 # 使用方式

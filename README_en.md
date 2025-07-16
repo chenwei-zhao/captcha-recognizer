@@ -14,11 +14,19 @@ MIT license
 
 # Version Requirements
 
-* ``Python`` >=  3.8.0
-* ``ultralytics`` >=  8.0.0
-* ``torch`` >=  1.8.0
-* ``onnxruntime``
-* ``onnx``
+* ``Python`` >=  3.6.0
+* ``opencv-python``
+
+## Version about opencv-python and numpy
+
+Version 1：
+
+opencv-python==4.12.0.88
+numpy==2.2.6
+
+Version 2：
+opencv-python==4.6.0.66
+numpy==1.24.4
 
 * Works on Linux, Windows, macOS
 

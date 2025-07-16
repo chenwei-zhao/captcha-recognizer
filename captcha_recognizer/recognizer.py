@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 from typing import Union
 
+import cv2.dnn
 import numpy as np
-from ultralytics import YOLO
 
 DEFAULT_CONF = 0.25
 
@@ -23,31 +23,84 @@ class Recognizer(metaclass=SingletonMeta):
         multi_cls_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'multi_cls.onnx')
         single_cls_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'single_cls.onnx')
 
-        self.multi_cls_model = YOLO(multi_cls_model_path, task='detect')
-        self.single_cls_model = YOLO(single_cls_model_path, task='detect')
+        self.multi_cls_model: cv2.dnn.Net = cv2.dnn.readNetFromONNX(multi_cls_model_path)
+
+        self.single_cls_model: cv2.dnn.Net = cv2.dnn.readNetFromONNX(single_cls_model_path)
 
     @staticmethod
     def predict(model, source: Union[str, Path, int, list, tuple, np.ndarray] = None,
                 **kwargs):
 
-        params = {'source': source,
-                  'device': 'cpu',
-                  'conf': 0.8,
-                  'imgsz': [416, 416]
-                  }
-        params.update(kwargs)
-        results = model.predict(**params)
-        if len(results):
-            return results[0]
-        return []
+        # Read the input image
+        original_image: np.ndarray = cv2.imread(source)
+        [height, width, _] = original_image.shape
 
-    def identify_gap(self, source, show_result=False, is_single=False, conf=DEFAULT_CONF,  **kwargs):
+        # Prepare a square image for inference
+        length = max((height, width))
+        image = np.zeros((length, length, 3), np.uint8)
+        image[0:height, 0:width] = original_image
+
+        # Calculate scale factor
+        scale = length / 416
+
+        # Preprocess the image and prepare blob for model
+        blob = cv2.dnn.blobFromImage(image, scalefactor=1 / 255, size=(416, 416), swapRB=True)
+        model.setInput(blob)
+
+        # Perform inference
+        outputs = model.forward()
+
+        # Prepare output array
+        outputs = np.array([cv2.transpose(outputs[0])])
+        rows = outputs.shape[1]
+
+        boxes = []
+        scores = []
+        class_ids = []
+
+        # Iterate through output to collect bounding boxes, confidence scores, and class IDs
+        for i in range(rows):
+            classes_scores = outputs[0][i][4:]
+            (minScore, maxScore, minClassLoc, (x, maxClassIndex)) = cv2.minMaxLoc(classes_scores)
+            if maxScore >= 0.25:
+                box = [
+                    int((outputs[0][i][0] - (0.5 * outputs[0][i][2])) * scale),
+                    int((outputs[0][i][1] - (0.5 * outputs[0][i][3])) * scale),
+                    int((outputs[0][i][0] + (0.5 * outputs[0][i][2])) * scale),
+                    int((outputs[0][i][1] + (0.5 * outputs[0][i][3])) * scale),
+                ]
+                boxes.append(box)
+                scores.append(maxScore)
+                class_ids.append(maxClassIndex)
+
+        # Apply NMS (Non-maximum suppression)
+        result_boxes = cv2.dnn.NMSBoxes(boxes, scores, 0.25, 0.45, 0.5)
+
+        detections = []
+
+        # Iterate through NMS results to draw bounding boxes and labels
+
+        models_names = {0: 't', 1: 'f', 2: 's'}
+        for i in range(len(result_boxes)):
+            index = result_boxes[i]
+            box = boxes[index]
+            detection = {
+                "class_id": class_ids[index],
+                "class_name": models_names[class_ids[index]],
+                "confidence": scores[index],
+                "box": box,
+                "scale": scale,
+            }
+            detections.append(detection)
+
+        return detections
+
+    def identify_gap(self, source, is_single=False, conf=DEFAULT_CONF, **kwargs):
         """
         识别给定图片的缺口。
 
         参数:
         - source: 图片源。
-        - show_result: 布尔值，指示是否展示识别结果，默认为False。
         - is_single: 布尔值，指示是否为单缺口图片。
         - **kwargs: 其他传递给预测函数的参数。
 
@@ -57,7 +110,7 @@ class Recognizer(metaclass=SingletonMeta):
         """
         if is_single:
             model = self.single_cls_model
-            classes = None
+            classes = [0, 1, 2]
         else:
             model = self.multi_cls_model
             classes = [0]
@@ -67,28 +120,26 @@ class Recognizer(metaclass=SingletonMeta):
         if not len(results):
             return box, box_conf
 
-        box_with_max_conf = max(results, key=lambda x: x.boxes.conf.max())
-        if show_result:
-            box_with_max_conf.show()
+        results_filtered = [result for result in results if result['class_id'] in classes]
+        box_with_max_conf = max(results_filtered, key=lambda x: x['confidence'])
 
-        box_with_conf = box_with_max_conf.boxes.data.tolist()[0]
-        return box_with_conf[:-2], box_with_conf[-2]
+        return box_with_max_conf['box'], box_with_max_conf['confidence']
 
     # 通过宽度和高度，相差的比例，按照权重1:1计算差异值
     @staticmethod
     def calculate_difference(slider, box):
 
-        slider_with_conf = slider.boxes.data.tolist()[0]
-        box_with_conf = box.boxes.data.tolist()[0]
+        slider_box = slider['box']
+        box_loop = box['box']
 
-        slider_height_mid = int((slider_with_conf[1] + slider_with_conf[3]) / 2)
-        box_height_mid = int((box_with_conf[1] + box_with_conf[3]) / 2)
+        slider_height_mid = int((slider_box[1] + slider_box[3]) / 2)
+        box_height_mid = int((box_loop[1] + box_loop[3]) / 2)
 
-        width_slider = slider_with_conf[2] - slider_with_conf[0]
-        height_slider = slider_with_conf[3] - slider_with_conf[1]
+        width_slider = slider_box[2] - slider_box[0]
+        height_slider = slider_box[3] - slider_box[1]
 
-        width_box = box_with_conf[2] - box_with_conf[0]
-        height_box = box_with_conf[3] - box_with_conf[1]
+        width_box = box_loop[2] - box_loop[0]
+        height_box = box_loop[3] - box_loop[1]
 
         # 通过中间点高度，物体宽度，物体高度计算差异值
         return abs(box_height_mid - slider_height_mid) * 2 + abs(width_box - width_slider) + abs(
@@ -107,7 +158,7 @@ class Recognizer(metaclass=SingletonMeta):
             box_list.append(result)
 
         # 按x轴坐标排序，从小到大
-        box_list.sort(key=lambda x: x.boxes.data.tolist()[0][0])
+        box_list.sort(key=lambda x: x['box'][0])
         return box_list
 
     def identify_target_boxes_by_screenshot(self, source, **kwargs):
@@ -139,25 +190,20 @@ class Recognizer(metaclass=SingletonMeta):
 
         return slider_box, box_nearest
 
-    def identify_screenshot(self, source, show_result=False, **kwargs):
+    def identify_screenshot(self, source, **kwargs):
         # 通过截图识别滑块缺口
         slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source, **kwargs)
         if not slider_box or not box_nearest:
             return [], 0
-        if show_result:
-            box_nearest.show()
 
-        box_with_conf = box_nearest.boxes.data.tolist()[0]
-        return box_with_conf[:-2], box_with_conf[-2]
+        return box_nearest['box'], box_nearest['confidence']
 
-    def identify_distance_by_screenshot(self, source, show_result=False, **kwargs):
+    def identify_distance_by_screenshot(self, source, **kwargs):
         # 通过截图识别滑块缺口, 计算缺口与滑块的距离，计算滑块需要滑动距离
         slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source, **kwargs)
         if not slider_box or not box_nearest:
             return
-        if show_result:
-            box_nearest.show()
 
-        box_with_conf = box_nearest.boxes.data.tolist()[0]
-        slider_with_conf = slider_box.boxes.data.tolist()[0]
-        return int(box_with_conf[0] - slider_with_conf[0])
+        box_loop = box_nearest['box']
+        slider_box = slider_box['box']
+        return int(box_loop[0] - slider_box[0])
