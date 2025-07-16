@@ -1,6 +1,6 @@
 
 # 版本历史
-0.8.0-beta (2025-07-16)
+0.8.0 (2025-07-16)
 * 依赖最小化 (Dependency Minimization)
 * 将ultralytics库替换为cv2
 

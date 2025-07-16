@@ -3,11 +3,6 @@
 # Captcha-Recognizer
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
-# DeepWiki文档
-[点击此处进入DeepWiki文档](https://deepwiki.com/chenwei-zhao/captcha-recognizer)
-
-DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目。
-
 
 # 支持的验证码类型
 - 单缺口验证码背景图
@@ -21,13 +16,17 @@ DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目�
 * ``opencv-python``
 
 ## opencv-python与numpy的兼容性
-兼容的版本1：
+兼容版本1:
+```
 opencv-python==4.12.0.88
 numpy==2.2.6
+```
 
-兼容版本2：
-opencv-python==4.6.0.66
-numpy==1.24.4
+兼容版本2:
+```markdown
+opencv-python==4.8.0.74
+numpy==1.23.0
+```
 
 更多兼容的版本请自行尝试
 
@@ -60,12 +59,10 @@ pip install captcha-recognizer
 
 from captcha_recognizer.recognizer import Recognizer
 
-# source传入图片路径, verbose=False表示关闭冗余输出
-# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
-# save 为True保存识别结果图 （生产环境请设置save=False)
+# source传入图片， 支持 Union[str, Path, bytes, np.ndarray]
 # is_single 默认为False表示支持多缺口背景图识别，is_single=True表示仅支持单缺口背景图识别（指定is_single为True时，对单缺口背景图识别准确度更高）
 recognizer = Recognizer()
-box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
+box, confidence = recognizer.identify_gap(source='your_example_image.png')
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -165,11 +162,10 @@ print(f'可信度: {confidence}')
 
 from captcha_recognizer.recognizer import Recognizer
 
-# source传入图片路径, verbose=False表示关闭冗余输出
-# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
-# save 为True保存识别结果图 （生产环境请设置save=False)
+# source传入图片，支持 Union[str, Path, bytes, np.ndarray]
+
 recognizer = Recognizer()
-box, confidence = recognizer.identify_screenshot(source='your_example_image.png', verbose=False)
+box, confidence = recognizer.identify_screenshot(source='your_example_image.png')
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -205,10 +201,8 @@ print(f'可信度: {confidence}')
 ```python3
 from captcha_recognizer.recognizer import Recognizer
 
-# source传入图片路径或图片对象
-# verbose=False表示关闭冗余输出
-# show_result 为True展示识别效果图 (生产环境请设置show_result=False)
-# save 为True保存识别结果图 （生产环境请设置save=False)
+# source传入图片, 支持Union[str, Path, bytes, np.ndarray]
+
 recognizer = Recognizer()
 distance = recognizer.identify_distance_by_screenshot(source='your_screenshot.jpg')
 
@@ -260,6 +254,11 @@ print('滑块距离', distance)
 - Model Unsupported model IR version: 9, max supported IR version: 8
     - 参考 [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
     
+
+# 了解更多
+[点击此处进入DeepWiki文档](https://deepwiki.com/chenwei-zhao/captcha-recognizer)
+
+DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目。
 
 
 # 项目维护

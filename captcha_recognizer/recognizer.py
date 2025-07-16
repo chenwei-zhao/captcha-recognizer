@@ -5,7 +5,10 @@ from typing import Union
 import cv2.dnn
 import numpy as np
 
-DEFAULT_CONF = 0.25
+CONF_THRESHOLD = 0.25
+IOU_THRESHOLD = 0.45
+NMS_THRESHOLD = 0.5
+NAMES = {0: 't', 1: 'f', 2: 's'}
 
 
 class SingletonMeta(type):
@@ -28,11 +31,24 @@ class Recognizer(metaclass=SingletonMeta):
         self.single_cls_model: cv2.dnn.Net = cv2.dnn.readNetFromONNX(single_cls_model_path)
 
     @staticmethod
-    def predict(model, source: Union[str, Path, int, list, tuple, np.ndarray] = None,
-                **kwargs):
+    def image_to_array(source: Union[str, Path, bytes, np.ndarray] = None):
+        if isinstance(source, (str, Path)):
+            # 从文件路径读取
+            return cv2.imread(str(source))
+        elif isinstance(source, bytes):
+            # 从字节流读取
+            np_arr = np.frombuffer(source, np.uint8)
+            return cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+        elif isinstance(source, np.ndarray):
+            # 如果已经是 numpy 数组，直接使用
+            return source
+        else:
+            raise TypeError("Unsupported source type. Only str, Path, bytes, or numpy.ndarray are supported.")
+
+    def predict(self, model, source: Union[str, Path, bytes, np.ndarray] = None, conf=CONF_THRESHOLD):
 
         # Read the input image
-        original_image: np.ndarray = cv2.imread(source)
+        original_image: np.ndarray = self.image_to_array(source)
         [height, width, _] = original_image.shape
 
         # Prepare a square image for inference
@@ -62,7 +78,7 @@ class Recognizer(metaclass=SingletonMeta):
         for i in range(rows):
             classes_scores = outputs[0][i][4:]
             (minScore, maxScore, minClassLoc, (x, maxClassIndex)) = cv2.minMaxLoc(classes_scores)
-            if maxScore >= 0.25:
+            if maxScore >= conf:
                 box = [
                     int((outputs[0][i][0] - (0.5 * outputs[0][i][2])) * scale),
                     int((outputs[0][i][1] - (0.5 * outputs[0][i][3])) * scale),
@@ -74,19 +90,18 @@ class Recognizer(metaclass=SingletonMeta):
                 class_ids.append(maxClassIndex)
 
         # Apply NMS (Non-maximum suppression)
-        result_boxes = cv2.dnn.NMSBoxes(boxes, scores, 0.25, 0.45, 0.5)
+        result_boxes = cv2.dnn.NMSBoxes(boxes, scores, CONF_THRESHOLD, IOU_THRESHOLD, NMS_THRESHOLD)
 
         detections = []
 
         # Iterate through NMS results to draw bounding boxes and labels
 
-        models_names = {0: 't', 1: 'f', 2: 's'}
         for i in range(len(result_boxes)):
             index = result_boxes[i]
             box = boxes[index]
             detection = {
                 "class_id": class_ids[index],
-                "class_name": models_names[class_ids[index]],
+                "class_name": NAMES[class_ids[index]],
                 "confidence": scores[index],
                 "box": box,
                 "scale": scale,
@@ -95,14 +110,14 @@ class Recognizer(metaclass=SingletonMeta):
 
         return detections
 
-    def identify_gap(self, source, is_single=False, conf=DEFAULT_CONF, **kwargs):
+    def identify_gap(self, source, is_single=False, conf=CONF_THRESHOLD, **kwargs):
         """
         识别给定图片的缺口。
 
         参数:
         - source: 图片源。
         - is_single: 布尔值，指示是否为单缺口图片。
-        - **kwargs: 其他传递给预测函数的参数。
+        - conf: 置信度
 
         返回:
         - box: 一个列表，包含具有最高置信度的间隙的边界框坐标。
@@ -114,7 +129,7 @@ class Recognizer(metaclass=SingletonMeta):
         else:
             model = self.multi_cls_model
             classes = [0]
-        results = self.predict(model=model, source=source, classes=classes, conf=conf, **kwargs)
+        results = self.predict(model=model, source=source, conf=conf)
         box = []
         box_conf = 0
         if not len(results):
@@ -145,10 +160,9 @@ class Recognizer(metaclass=SingletonMeta):
         return abs(box_height_mid - slider_height_mid) * 2 + abs(width_box - width_slider) + abs(
             height_box - height_slider)
 
-    def identify_boxes_by_screenshot(self, source, **kwargs):
+    def identify_boxes_by_screenshot(self, source: Union[str, Path, bytes, np.ndarray]):
         # 通过截图图片识别所有box
-        results = self.predict(model=self.single_cls_model, source=source,
-                               **kwargs)
+        results = self.predict(model=self.single_cls_model, source=source)
 
         box_list = []
         if not len(results):
@@ -161,12 +175,12 @@ class Recognizer(metaclass=SingletonMeta):
         box_list.sort(key=lambda x: x['box'][0])
         return box_list
 
-    def identify_target_boxes_by_screenshot(self, source, **kwargs):
+    def identify_target_boxes_by_screenshot(self, source):
         # 识别滑块框和目标缺口框
 
         slider_box = box_nearest = None
 
-        box_list = self.identify_boxes_by_screenshot(source, **kwargs)
+        box_list = self.identify_boxes_by_screenshot(source)
 
         if not box_list or len(box_list) == 1:
             return slider_box, box_nearest
@@ -192,7 +206,7 @@ class Recognizer(metaclass=SingletonMeta):
 
     def identify_screenshot(self, source, **kwargs):
         # 通过截图识别滑块缺口
-        slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source, **kwargs)
+        slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source)
         if not slider_box or not box_nearest:
             return [], 0
 
@@ -200,7 +214,7 @@ class Recognizer(metaclass=SingletonMeta):
 
     def identify_distance_by_screenshot(self, source, **kwargs):
         # 通过截图识别滑块缺口, 计算缺口与滑块的距离，计算滑块需要滑动距离
-        slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source, **kwargs)
+        slider_box, box_nearest = self.identify_target_boxes_by_screenshot(source)
         if not slider_box or not box_nearest:
             return
 

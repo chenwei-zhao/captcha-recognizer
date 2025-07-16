@@ -1,11 +1,10 @@
 from captcha_recognizer.recognizer import Recognizer
 
 # 1. 单缺口、多缺口验证码背景图识别
-# source传入图片路径或图片对象
-# verbose=False表示关闭冗余输出
+# source传入图片， 支持 Union[str, Path, bytes, np.ndarray]
 
 recognizer = Recognizer()
-box, confidence = recognizer.identify_gap(source='images_example/example1.png', verbose=False)
+box, confidence = recognizer.identify_gap(source='images_example/example1.png')
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -21,11 +20,10 @@ print(f'可信度: {confidence}')
 
 
 # 2. 验证码截图识别
-# source传入图片路径或图片对象
-# verbose=False表示关闭冗余输出
+# source传入图片， 支持 Union[str, Path, bytes, np.ndarray]
 
 recognizer = Recognizer()
-box, confidence = recognizer.identify_screenshot(source='images_example/example8.png', verbose=False)
+box, confidence = recognizer.identify_screenshot(source='images_example/example8.png')
 
 print(f'缺口坐标: {box}')
 print(f'可信度: {confidence}')
@@ -37,10 +35,10 @@ print(f'可信度: {confidence}')
 # """
 
 # 3. 基于验证码截图识别滑块距离
-# source传入图片路径或图片对象
-# verbose=False表示关闭冗余输出
+
+# source传入图片， 支持 Union[str, Path, bytes, np.ndarray]
 
 recognizer = Recognizer()
-distance = recognizer.identify_distance_by_screenshot(source='images_example/example8.png', verbose=False)
+distance = recognizer.identify_distance_by_screenshot(source='images_example/example8.png')
 
 print('滑块距离', distance)
