@@ -42,3 +42,4 @@ recognizer = Recognizer()
 distance = recognizer.identify_distance_by_screenshot(source='images_example/example8.png')
 
 print('滑块距离', distance)
+

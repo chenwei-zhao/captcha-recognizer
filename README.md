@@ -1,60 +1,67 @@
 简体中文 | [English](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/README_en.md)
 
 # Captcha-Recognizer
+
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
-
 # 支持的验证码类型
+
 - 单缺口验证码背景图
 - 多缺口验证码背景图
 - 验证码截图（包含滑块和背景图）
 
-
 # 版本要求
 
-* ``Python`` >=  3.6.0
+* ``Python`` >= 3.6.0
 * ``opencv-python``
-
-## opencv-python与numpy的兼容性
-兼容版本1:
-```
-opencv-python==4.12.0.88
-numpy==2.2.6
-```
-
-兼容版本2:
-```markdown
-opencv-python==4.8.0.74
-numpy==1.23.0
-```
-
-更多兼容的版本请自行尝试
-
+* ``shapely``
+* ``onnxruntime``
 
 * Works on Linux, Windows, MacOS
 
-
 # 使用方式
 
-- [HTTP API](https://github.com/chenwei-zhao/captcha-api)
 - Pypi
-
-## HTTP API
-
-文档请移步: [captcha-api](https://github.com/chenwei-zhao/captcha-api)
+- [HTTP API](https://github.com/chenwei-zhao/captcha-api)
 
 ## Pypi
 
 ### 从 Pypi 安装
 
-
 ```bash
 pip install captcha-recognizer
 ```
 
+## HTTP API
 
+请移步: [captcha-api](https://github.com/chenwei-zhao/captcha-api)
+
+# 使用示例
+
+## V2 增强版
+
+V2增强版，增强了对多缺口复杂验证码的识别效果
+
+V2支持以下类型验证码的识别
+
+- 单缺口验证码背景图（不含滑块的背景图）
+- 多缺口验证码截图或合成图（含滑块和背景图）
+
+### V2 增强版使用示例
+
+```python3
+# V2增强版
+from captcha_recognizer.slider import SliderV2
+
+box, confidence = SliderV2().identify(source=f'images_example/example8.png', show=True)
+print(f'缺口坐标: {box}')
+print('置信度', confidence)
+```
+
+## V1 版本
 
 ### 基于单缺口/多缺口验证码背景图识别滑块缺口
+
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
@@ -155,9 +162,8 @@ print(f'可信度: {confidence}')
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict7.png"
 >
 
-
-
 ### 基于验证码截图的识别滑块缺口
+
 ```Python
 
 from captcha_recognizer.recognizer import Recognizer
@@ -209,10 +215,10 @@ distance = recognizer.identify_distance_by_screenshot(source='your_screenshot.jp
 print('滑块距离', distance)
 ```
 
-
-
 # 注意事项
+
 ## 偏移量
+
 某些种类的滑块验证码，滑块初始位置存在一定偏移，以下面图中的滑块初始位置为例：
 
 <p>示例图 9</p>
@@ -224,6 +230,7 @@ print('滑块距离', distance)
 
 
 如示例图9中：
+
 - 第一条黑线位置为滑块初始位置，距离图片边框有大概有8个像素的偏移量（offset为8）
 - 识别结果的缺口坐标为 [x1, y1, x2, y2] 对应缺口的左上角和右下角坐标（坐标原点为图片左上角）
 - 第二条黑线的X轴坐标值对应缺口识别结果左上角的X轴坐标值，此处值为154（x1为154）
@@ -231,6 +238,7 @@ print('滑块距离', distance)
 - 也就是说，实际的滑块距离为缺口的x1值减去滑块距离图片边框的偏移量(offset)
 
 ## 图片缩放
+
 某些验证码，前端渲染时会对图片进行缩放，因此实际的滑块距离也要按照图片缩放比例进行计算。
 
 <p>示例图 10</p>
@@ -239,44 +247,61 @@ print('滑块距离', distance)
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/rendered_size.png"
 >
 
-
 ## 图片识别耗时
+
 - 首次识别图片耗时较长（2s左右）；
 - 后续单张图片的识别在60ms（60毫秒）左右；
 - 因为首次识别图片时需要将模型从磁盘加载到内存中，并进行一系列的初始化工作，如权重加载、内存分配等。这个过程相对耗时；
 - 一旦模型加载完成并初始化好，后续的图片预测就可以直接利用已经加载好的模型和分配好的资源，从而避免了重复加载和初始化的开销。
 
-
-
 # 安装过程中遇到问题
+
 - Error loading “xxx\Lib\site-packages\torch\lib\fbgemm.dll” or one of its dependencies.
-  - 参考 [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
+    - 参考 [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
 - Model Unsupported model IR version: 9, max supported IR version: 8
     - 参考 [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
-    
+
+- opencv-python与numpy的兼容性问题
+  兼容版本1:
+
+```
+opencv-python==4.12.0.88
+numpy==2.2.6
+```
+
+兼容版本2:
+
+```markdown
+opencv-python==4.8.0.74
+numpy==1.23.0
+```
+
+更多兼容的版本请自行尝试
 
 # 了解更多
+
 [点击此处进入DeepWiki文档](https://deepwiki.com/chenwei-zhao/captcha-recognizer)
 
 DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目。
 
-
 # 项目维护
 
-- 如果你对本项目感兴趣，欢迎star。
+- 如果你对本项目感兴趣，欢迎Star。
 - 项目长期维护。
 - 如果你遇到本项目不能识别的滑块验证码，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
 - 有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
 
 # 更多联系方式
+
 - Gmail: chenwei.zhaozhao@gmail.com
 - 163/网易: chenwei_nature@163.com
 
-
 # 免责声明
+
 本项目不针对任何一家验证码厂商，项目所有内容仅供学习交流使用，不用于其他任何目的，严禁用于非法用途。
 
 # 许可证
+
 MIT license
 
 # 感谢你的支持
@@ -286,17 +311,17 @@ MIT license
 [![Stargazers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/stars/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/stargazers)
 
 ## Forkers
-[![Forkers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/forks/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/network/members)
 
+[![Forkers repo roster for @chenwei-zhao/captcha-recognizer](https://reporoster.com/forks/dark/chenwei-zhao/captcha-recognizer)](https://github.com/chenwei-zhao/captcha-recognizer/network/members)
 
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chenwei-zhao/captcha-recognizer&type=Date)](https://star-history.com/#chenwei-zhao/captcha-recognizer&Date)
 
 ## 捐赠
+
 - 感谢支持开源项目
 - 如果项目有帮助到您，可以选择捐赠一些费用，帮助项目持续更新。
-
 
 <img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg" width="168" alt="微信支付">
 

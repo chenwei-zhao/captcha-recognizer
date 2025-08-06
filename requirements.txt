@@ -1,1 +1,3 @@
 opencv-python
+shapely
+onnxruntime

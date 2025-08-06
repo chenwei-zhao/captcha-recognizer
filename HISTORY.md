@@ -1,5 +1,8 @@
 
 # 版本历史
+0.9.0-Beta (2025-08-06)
+* 新增V2增强版模型 (V2 Enhanced Model)
+
 0.8.0 (2025-07-16)
 * 依赖最小化 (Dependency Minimization)
 * 将ultralytics库替换为cv2

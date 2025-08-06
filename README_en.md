@@ -16,19 +16,10 @@ MIT license
 
 * ``Python`` >=  3.6.0
 * ``opencv-python``
+* ``shapely``
+* ``onnxruntime``
 
-## Version about opencv-python and numpy
-
-Version 1：
-
-opencv-python==4.12.0.88
-numpy==2.2.6
-
-Version 2：
-opencv-python==4.6.0.66
-numpy==1.24.4
-
-* Works on Linux, Windows, macOS
+* Works on Linux, Windows, MacOS
 
 
 # Usage
@@ -72,7 +63,7 @@ The notch box coordinate is the distance between the top left corner and the bot
 from captcha_recognizer.recognizer import Recognizer
 recognizer = Recognizer()
 
-box, confidence = recognizer.identify_screenshot(source='<image obj>', verbose=False, show_result=True)
+box, confidence = recognizer.identify_screenshot(source='<image obj>')
 
 print(f'Gap coordinate: {box}')
 print(f'Confidence: {confidence}')
@@ -168,6 +159,17 @@ Includes, but is not limited to, the following types
   - See [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
 - Model Unsupported model IR version: 9, max supported IR version: 8
     - See [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
+
+- Version about opencv-python and numpy
+
+Version 1：
+
+opencv-python==4.12.0.88
+numpy==2.2.6
+
+Version 2：
+opencv-python==4.6.0.66
+numpy==1.24.4
 
 # Email
 - Gmail: chenwei.zhaozhao@gmail.com
