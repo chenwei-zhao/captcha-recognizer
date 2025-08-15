@@ -136,6 +136,8 @@ class Recognizer(metaclass=SingletonMeta):
             return box, box_conf
 
         results_filtered = [result for result in results if result['class_id'] in classes]
+        if not results_filtered:
+            return box, box_conf
         box_with_max_conf = max(results_filtered, key=lambda x: x['confidence'])
 
         return box_with_max_conf['box'], box_with_max_conf['confidence']
