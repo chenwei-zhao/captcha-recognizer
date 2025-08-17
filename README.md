@@ -11,7 +11,16 @@ Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深�
 - 验证码截图（包含滑块和背景图）
 
 # 在线演示
+
 - [在线演示](http://47.94.198.97/)
+
+<p>
+<img 
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/online-demo.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/online-demo.png"
+>
+</p>
+
 
 # 版本要求
 
