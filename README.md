@@ -16,8 +16,8 @@ Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深�
 
 <p>
 <img 
-  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/online-demo.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/online-demo.png"
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/online-demo.gif" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/online-demo.gif"
 >
 </p>
 
