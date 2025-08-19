@@ -16,7 +16,7 @@ def read_requirements(filename):
 
 setup(
     name='captcha-recognizer',
-    version='0.9.0',
+    version='0.10.0',
     description='滑块验证码识别，基于YOLO训练，支持单缺口、多缺口、截图识别，后续可能增加更多类型的验证码',
     long_description=read_file("README.md") + "\n\n" + read_file("HISTORY.md"),
     long_description_content_type="text/markdown",

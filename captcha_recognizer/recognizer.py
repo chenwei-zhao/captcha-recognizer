@@ -23,12 +23,8 @@ class SingletonMeta(type):
 class Recognizer(metaclass=SingletonMeta):
     def __init__(self):
         root_dir = os.path.dirname(os.path.dirname(__file__))
-        multi_cls_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'multi_cls.onnx')
-        single_cls_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'single_cls.onnx')
-
-        self.multi_cls_model: cv2.dnn.Net = cv2.dnn.readNetFromONNX(multi_cls_model_path)
-
-        self.single_cls_model: cv2.dnn.Net = cv2.dnn.readNetFromONNX(single_cls_model_path)
+        slider_v1_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'slider-v1.onnx')
+        self.model_v1: cv2.dnn.Net = cv2.dnn.readNetFromONNX(slider_v1_model_path)
 
     @staticmethod
     def image_to_array(source: Union[str, Path, bytes, np.ndarray] = None):
@@ -110,26 +106,21 @@ class Recognizer(metaclass=SingletonMeta):
 
         return detections
 
-    def identify_gap(self, source, is_single=False, conf=CONF_THRESHOLD, **kwargs):
+    def identify_gap(self, source, conf=CONF_THRESHOLD, **kwargs):
         """
         识别给定图片的缺口。
 
         参数:
         - source: 图片源。
-        - is_single: 布尔值，指示是否为单缺口图片。
         - conf: 置信度
 
         返回:
         - box: 一个列表，包含具有最高置信度的间隙的边界框坐标。
         - box_conf: 浮点数，代表间隙的置信度。
         """
-        if is_single:
-            model = self.single_cls_model
-            classes = [0, 1, 2]
-        else:
-            model = self.multi_cls_model
-            classes = [0]
-        results = self.predict(model=model, source=source, conf=conf)
+
+        classes = [0]
+        results = self.predict(model=self.model_v1, source=source, conf=conf)
         box = []
         box_conf = 0
         if not len(results):
@@ -164,7 +155,7 @@ class Recognizer(metaclass=SingletonMeta):
 
     def identify_boxes_by_screenshot(self, source: Union[str, Path, bytes, np.ndarray]):
         # 通过截图图片识别所有box
-        results = self.predict(model=self.single_cls_model, source=source)
+        results = self.predict(model=self.model_v1, source=source)
 
         box_list = []
         if not len(results):
