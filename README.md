@@ -62,7 +62,7 @@ V2支持以下类型验证码的识别
 ### V2 Beta 增强版使用示例
 
 ```shell
-pip install captcha-recognizer==0.9.0b0
+pip install captcha-recognizer --upgrade
 ```
 
 
