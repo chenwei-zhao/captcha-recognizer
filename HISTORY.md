@@ -1,5 +1,8 @@
 # 版本历史
 
+1.0.0-Beta1 (2025-09-15)
+* 更新README (Update README)
+
 1.0.0-Beta (2025-09-15)
 
 * 移除V1版本 (V1 Removed)
