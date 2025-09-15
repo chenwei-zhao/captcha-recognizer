@@ -16,14 +16,14 @@ IOU_THRESHOLD = 0.8
 Y_IOU_THRESHOLD = 0.85
 
 
-class SliderV2:
+class Slider:
 
     def __init__(self):
         """
         Initialize the instance segmentation model using an ONNX model.
         """
         root_dir = os.path.dirname(os.path.dirname(__file__))
-        slider_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'slider-v2.onnx')
+        slider_model_path = os.path.join(root_dir, 'captcha_recognizer', 'models', 'slider.onnx')
 
         self.session = ort.InferenceSession(
             slider_model_path,
@@ -256,9 +256,7 @@ class SliderV2:
         """
         # 计算质心
         centroid = np.mean(points, axis=0)
-        print('centroid', centroid)
         # 将质心移到原点
-        # normalized_points = points - np.array([x, 0])
         normalized_points = points - centroid
         return normalized_points
 
@@ -285,8 +283,7 @@ class SliderV2:
         :param poly2: 多边形2的顶点坐标，格式同上
         :return: IoU 值（范围 [0, 1]）
         """
-        # 创建 Shapely Polygon 对象
-        # poly1 = Polygon(normalize_points(poly1))  # buffer(0) 修复无效多边形（如自相交）
+        # 归一化处理到原点
         p1 = self.normalize_points(poly1)
         p2 = self.normalize_points(poly2)
 
@@ -323,12 +320,13 @@ class SliderV2:
             if self.y_iou([box_slider[1], box_slider[3]], [box[1], box[3]]) > Y_IOU_THRESHOLD:
                 box_filtered.append(box)
                 segment_filtered.append(segment_sample[index])
+        # 如果通过y轴iou没有过滤掉有效值，则从所有box中选择iou最大的一个
+        if not box_filtered:
+            box_filtered = box_sample
+            segment_filtered = segment_sample
 
         if len(box_filtered) == 1:
             return box_filtered[0], segment_filtered[0]
-
-        elif len(box_filtered) == 0:
-            return [], []
 
         iou_flag = 0
         iou_index = 0
@@ -749,6 +747,6 @@ if __name__ == "__main__":
     """
     单缺口
     """
-    model = SliderV2()
-    results = model.identify(source='img_3.png',show=True)
-    print('results', results)
+    model = Slider()
+    res = model.identify(source='img_example.png', show=True)
+    print('results', res)

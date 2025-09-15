@@ -4,11 +4,26 @@
 
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
+# 当前最新版本
+
+Beat版本：1.0.0-Beta
+稳定版本：0.10.0
+
+# Note
+1.0.0-Beta 版本已发布，欢迎测试使用
+```shell
+pip install --pre captcha-recognizer
+```
+
+更多版本见
+[Pypi 版本历史](https://pypi.org/project/captcha-recognizer/#history)
+[Github 版本历史](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/HISTORY.md)
+
 # 支持的验证码类型
 
 - 单缺口验证码背景图
-- 多缺口验证码背景图
-- 验证码截图（包含滑块和背景图）
+- ~~多缺口验证码背景图 (1.0.0及之后版本移除)~~
+- 验证码全图（图片包含滑块和背景图）
 
 # 在线演示
 
@@ -50,6 +65,7 @@ pip install captcha-recognizer
 
 # 使用示例
 
+<<<<<<< Updated upstream
 ## V2 增强版
 
 V2增强版，增强了对多缺口复杂验证码的识别效果
@@ -129,17 +145,14 @@ print(f'可信度: {confidence}')
 <img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict2.png"
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png"
 >
+=======
+支持以下类型验证码的识别
+>>>>>>> Stashed changes
 
-<p>示例图 3</p>
-<p>尺寸 400*200</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example3.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png"
->
-<p>识别效果示例图3</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict3.png"
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png"
->
+1. 单缺口验证码背景图（不含滑块的背景图） 
+2. 单缺口、多缺口验证码全图（图片含滑块和背景图）
 
+## 单缺口验证码背景图 识别示例
 
 <p>示例图 4</p>
 <p>尺寸 672*390</p>
@@ -151,64 +164,8 @@ print(f'可信度: {confidence}')
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict4.png"
 >
 
-<p>示例图 5</p>
-<p>尺寸 280*155</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example5.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example5.png"
->
-<p>识别效果示例图 5</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict5.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict5.png"
->
 
-<p>示例图 6</p>
-<p>尺寸 590*360</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example6.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example6.png"
->
-<p>识别效果示例图 6</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict6.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict6.png"
->
-
-<p>示例图 7</p>
-<p>尺寸 320*160</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example7.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example7.png"
->
-<p>识别效果示例图 7</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict7.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict7.png"
->
-
-### 基于验证码截图的识别滑块缺口
-
-```Python
-
-from captcha_recognizer.recognizer import Recognizer
-
-# source传入图片，支持 Union[str, Path, bytes, np.ndarray]
-
-recognizer = Recognizer()
-box, confidence = recognizer.identify_screenshot(source='your_example_image.png')
-
-print(f'缺口坐标: {box}')
-print(f'可信度: {confidence}')
-
-"""
-打印结果如下:
-缺口方框坐标: [331.72052001953125, 55.96122741699219, 422.079345703125, 161.7498779296875]
-可信度: 0.9513089656829834
-
-坐标原点：图片左上角
-缺口方框坐标为缺口方框左上角和右下角距离坐标原点的距离
-"""
-```
-
-### 基于验证码截图的滑块识别滑块缺口示例
-
-包括且不限于以下类型、尺寸的滑块验证码截图
-
+## 单缺口、多缺口验证码全图 识别示例
 
 <p>示例图 8</p>
 <p>尺寸 305*156</p>
@@ -221,17 +178,17 @@ print(f'可信度: {confidence}')
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict8.png"
 >
 
-### 基于验证码截图识别滑块距离
+
+## 代码示例
 
 ```python3
-from captcha_recognizer.recognizer import Recognizer
+from captcha_recognizer.slider import Slider
 
-# source传入图片, 支持Union[str, Path, bytes, np.ndarray]
-
-recognizer = Recognizer()
-distance = recognizer.identify_distance_by_screenshot(source='your_screenshot.jpg')
-
-print('滑块距离', distance)
+# source传入待识别图片，支持数据类型为 Union[str, Path, bytes, np.ndarray]
+# show为布尔值，默认值为False, 为True表示展示图片识别效果，线上环境请缺省，或设置为False
+box, confidence = Slider().identify(source=f'images_example/example8.png', show=True)
+print(f'缺口坐标: {box}')
+print('置信度', confidence)
 ```
 
 # 注意事项
@@ -266,21 +223,9 @@ print('滑块距离', distance)
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/rendered_size.png"
 >
 
-## 图片识别耗时
 
-- 首次识别图片耗时较长（2s左右）；
-- 后续单张图片的识别在60ms（60毫秒）左右；
-- 因为首次识别图片时需要将模型从磁盘加载到内存中，并进行一系列的初始化工作，如权重加载、内存分配等。这个过程相对耗时；
-- 一旦模型加载完成并初始化好，后续的图片预测就可以直接利用已经加载好的模型和分配好的资源，从而避免了重复加载和初始化的开销。
 
-# 安装过程中遇到问题
-
-- Error loading “xxx\Lib\site-packages\torch\lib\fbgemm.dll” or one of its dependencies.
-    - 参考 [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
-- Model Unsupported model IR version: 9, max supported IR version: 8
-    - 参考 [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
-
-- opencv-python与numpy的兼容性问题
+## opencv-python与numpy的兼容性问题
   兼容版本1:
 
 ```
@@ -305,10 +250,10 @@ DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目�
 
 # 项目维护
 
-- 如果你对本项目感兴趣，欢迎Star。
-- 项目长期维护。
-- 如果你遇到本项目不能识别的滑块验证码，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
-- 有任何问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
+- 感谢 Star 支持;
+- 项目长期维护;
+- 有任何疑问或问题，欢迎提[issue](https://github.com/chenwei-zhao/captcha-recognizer/issues)。
+
 
 # 更多联系方式
 

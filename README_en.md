@@ -36,79 +36,21 @@ pip install captcha-recognizer
 ```
 
 
-## Background image recognition
-```Python
-
-from captcha_recognizer.recognizer import Recognizer
-
-# source is your image path, set verbose to be False to disable verbose log
-recognizer = Recognizer()
-box, confidence = recognizer.identify_gap(source='your_example_image.png', verbose=False)
-
-print(f'Gap coordinate: {box}')
-print(f'Confidence: {confidence}')
-
-"""
-Gap coordinate: [331.72052001953125, 55.96122741699219, 422.079345703125, 161.7498779296875]
-Confidence: 0.9513089656829834
-
-Origin of coordinates: top left corner of the picture
-The notch box coordinate is the distance between the top left corner and the bottom right corner of the notch box and the origin of the coordinate
-"""
-```
-
-## Screenshot recognition
+## Example Code
 
 ```python
-from captcha_recognizer.recognizer import Recognizer
-recognizer = Recognizer()
+from captcha_recognizer.slider import Slider
 
-box, confidence = recognizer.identify_screenshot(source='<image obj>')
-
+box, confidence = Slider().identify(source=f'images_example/example8.png', show=True)
 print(f'Gap coordinate: {box}')
-print(f'Confidence: {confidence}')
+print('Confidence', confidence)
 
 ```
-
 
 # Sample slider picture
 
 
-
 Includes, but is not limited to, the following types
-
-
-<p>example 1</p>
-<p>尺寸 552*344</p>
-<img 
-  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example1.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png"
->
-<p>predict 1</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict1.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict1.png"
->
-
-<p>example 2</p>
-<p>尺寸 260*160</p>p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example2.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example2.png"
->
-
-<p>predict 2</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict2.png"
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict2.png"
->
-
-<p>example 3</p>
-<p>尺寸 400*200</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example3.png" 
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example1.png"
->
-<p>predict3</p>
-<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict3.png"
-  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict3.png"
->
 
 
 <p>example 4</p>
@@ -152,15 +94,19 @@ Includes, but is not limited to, the following types
   alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict7.png"
 >
 
+<p>example 8</p>
+<img 
+  src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_example/example8.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/example8.png"
+>
+<p>predict 8</p>
+<img src="https://raw.githubusercontent.com/chenwei-zhao/captcha-recognizer/main/images_predict/predict8.png" 
+  alt="https://captcha-slider.oss-cn-beijing.aliyuncs.com/slider/predict8.png"
+>
 
 
-# have a problem
-- Error loading “xxx\Lib\site-packages\torch\lib\fbgemm.dll” or one of its dependencies.
-  - See [Issues 2](https://github.com/chenwei-zhao/captcha-recognizer/issues/2)
-- Model Unsupported model IR version: 9, max supported IR version: 8
-    - See [Issues 1](https://github.com/chenwei-zhao/captcha-recognizer/issues/1)
 
-- Version about opencv-python and numpy
+# Version about opencv-python and numpy
 
 Version 1：
 
