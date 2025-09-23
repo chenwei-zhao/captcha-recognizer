@@ -128,6 +128,19 @@ print('置信度', confidence)
 - 因此实际滑块的距离为 x1-offset (154-8=146)
 - 也就是说，实际的滑块距离为缺口的x1值减去滑块距离图片边框的偏移量(offset)
 
+### 获取偏移量
+通常某一类的滑块验证码，滑块偏移量是固定的，可直接通过截图工具或测量工具获取
+如果是动态的偏移量，可通过 identify_offset 方法获取偏移量
+
+```python3
+from captcha_recognizer.slider import Slider
+
+offset, confidence = Slider().identify_offset(source='example.png')
+print(f'偏移量: {offset}')
+print('置信度', confidence)
+
+```
+
 ## 图片缩放
 
 某些验证码，前端渲染时会对图片进行缩放，因此实际的滑块距离也要按照图片缩放比例进行计算。

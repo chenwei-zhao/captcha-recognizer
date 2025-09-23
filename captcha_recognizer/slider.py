@@ -375,7 +375,7 @@ class Slider:
     def identify_offset(self, source: Union[str, Path, bytes, np.ndarray], conf=CONF_THRESHOLD, iou=IOU_THRESHOLD,
                         show=False):
         """
-        通过滑块图获取固定的offset
+        通过滑块图或者全图获取offset
         """
         box_list = []
         mask_ndarray = None
