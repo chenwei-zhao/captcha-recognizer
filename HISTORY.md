@@ -1,5 +1,9 @@
 # 版本历史
 
+1.0.0 (2025-09-23)
+* 提高模型泛化能力 (Improve model generalization)
+* 优化识别逻辑 (Optimize recognition logic)
+
 1.0.0-Beta1 (2025-09-15)
 * 更新README (Update README)
 

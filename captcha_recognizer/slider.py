@@ -302,8 +302,7 @@ class Slider:
         iou = intersect / union if union > 0 else 0.0
         return iou
 
-    def pick_out_mask(self, boxes, segments):
-        boxes = boxes.tolist()
+    def pick_out_mask(self, boxes: list, segments):
         # boxes, masks 为两个列表，找出box值最小的一个
         box_slider = min(boxes, key=lambda x: x[0])
         box_slider_index = boxes.index(box_slider)
@@ -339,33 +338,81 @@ class Slider:
         return box_filtered[iou_index], segment_filtered[iou_index]
 
     def identify(self, source: Union[str, Path, bytes, np.ndarray], conf=CONF_THRESHOLD, iou=IOU_THRESHOLD, show=False):
-        box = []
-        box_conf = 0
-        boxes = []
-        masks = []
+        box_list = []
+        mask_ndarray = None
 
         original_image: np.ndarray = self.image_to_array(source)
         results = self.predict(original_image, conf=conf, iou=iou, imgsz=640)
 
         if results:
             boxes, masks = results[0]
-            if len(boxes) == 1:
-                box_array = boxes[0]
-                box = box_array[:4].tolist()
-                box_conf = float(box_array[4])
+            if len(boxes) == 0:
+                pass
+            elif len(boxes) == 1:
+                box_list = boxes[0].tolist()
+                mask_ndarray = masks[0]
+
             else:
                 segments = self.masks_to_segments(masks)
-                box_array, segment = self.pick_out_mask(boxes, segments)
-                if box_array:
-                    box = box_array[:4]
-                    box_conf = float(box_array[4])
-        if show and boxes.size > 0 and masks.size > 0:
-            sample = self.draw_segments(original_image, boxes, masks)
-            cv2.imshow('sample', sample)
+                box_list, _ = self.pick_out_mask(boxes.tolist(), segments)
+                mask_ndarray = masks[boxes.tolist().index(box_list)]
+
+        # 仅展示目标缺口
+        if show and box_list and mask_ndarray is not None:
+            sample = self.draw_segments(original_image, [box_list, ], [mask_ndarray, ])
+            cv2.imshow('result', sample)
             cv2.waitKey(0)
             cv2.destroyAllWindows()
 
+        if box_list:
+            box = box_list[:4]
+            box_conf = float(box_list[4])
+        else:
+            box = []
+            box_conf = 0.0
         return box, box_conf
+
+    def identify_offset(self, source: Union[str, Path, bytes, np.ndarray], conf=CONF_THRESHOLD, iou=IOU_THRESHOLD,
+                        show=False):
+        """
+        通过滑块图获取固定的offset
+        """
+        box_list = []
+        mask_ndarray = None
+
+        original_image: np.ndarray = self.image_to_array(source)
+        results = self.predict(original_image, conf=conf, iou=iou, imgsz=640)
+
+        if results:
+            boxes, masks = results[0]
+            if len(boxes) == 0:
+                pass
+            elif len(boxes) == 1:
+                box_list = boxes[0].tolist()
+                mask_ndarray = masks[0]
+
+            else:
+                # 如果有多个目标，则选择X值最小的目标
+                box_left = min(boxes, key=lambda x: x[0])
+                box_list = box_left.tolist()
+                mask_ndarray = masks[boxes.tolist().index(box_list)]
+
+        # 仅展示目标缺口
+        if show and box_list and mask_ndarray is not None:
+            sample = self.draw_segments(original_image, [box_list, ], [mask_ndarray, ])
+            cv2.imshow('result', sample)
+            cv2.waitKey(0)
+            cv2.destroyAllWindows()
+
+        if box_list:
+            box = box_list[:4]
+            box_conf = float(box_list[4])
+            offset = box[0]
+        else:
+            offset = 0
+            box_conf = 0.0
+
+        return offset, box_conf
 
     def scale_boxes(self, img1_shape: Tuple[int, int], boxes: np.ndarray, img0_shape: Tuple[int, int],
                     ratio_pad: Union[Tuple, None] = None, padding: bool = True, xywh: bool = False):

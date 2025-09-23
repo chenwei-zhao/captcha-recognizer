@@ -16,7 +16,7 @@ def read_requirements(filename):
 
 setup(
     name='captcha-recognizer',
-    version='1.0.0-Beta1',
+    version='1.0.0',
     description='滑块验证码识别',
     long_description=read_file("README.md") + "\n\n" + read_file("HISTORY.md"),
     long_description_content_type="text/markdown",
