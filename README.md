@@ -4,18 +4,15 @@
 
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
-# 当前最新版本
-
-Beat版本：1.0.0-Beta
-稳定版本：0.10.0
 
 # Note
-1.0.0-Beta 版本已发布，欢迎测试使用
+1.0.0版本已发布，欢迎测试使用
+
 ```shell
-pip install --pre captcha-recognizer
+pip install captcha-recognizer --upgrade
 ```
 
-更多版本见
+更多版本如下：
 [Pypi 版本历史](https://pypi.org/project/captcha-recognizer/#history)
 [Github 版本历史](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/HISTORY.md)
 
