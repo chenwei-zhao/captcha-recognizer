@@ -1,5 +1,8 @@
 # 版本历史
 
+1.0.1 (2025-09-29)
+* 提高默认的置信度阈值 (Improve default confidence threshold)
+
 1.0.0 (2025-09-23)
 * 提高模型泛化能力 (Improve model generalization)
 * 优化识别逻辑 (Optimize recognition logic)

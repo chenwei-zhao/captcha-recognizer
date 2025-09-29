@@ -5,17 +5,6 @@
 Captcha-Recognizer是一个易用的通用滑块验证码识别库，通过深度学习训练通用的缺口检测模型，基于训练的结果，识别出验证码中的滑块缺口位置，并返回缺口的坐标与可信度。
 
 
-# Note
-1.0.0版本已发布，欢迎测试使用
-
-```shell
-pip install captcha-recognizer --upgrade
-```
-
-更多版本如下：
-[Pypi 版本历史](https://pypi.org/project/captcha-recognizer/#history)
-[Github 版本历史](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/HISTORY.md)
-
 # 支持的验证码类型
 
 - 单缺口验证码背景图
@@ -176,6 +165,11 @@ numpy==1.23.0
 
 DeepWiki文档内可通过底部AI对话框进行交流，自由了解本项目。
 
+# 版本历史：
+[Pypi 版本历史](https://pypi.org/project/captcha-recognizer/#history)
+[Github 版本历史](https://github.com/chenwei-zhao/captcha-recognizer/blob/main/HISTORY.md)
+
+
 # 项目维护
 
 - 感谢 Star 支持;
@@ -210,10 +204,10 @@ MIT license
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chenwei-zhao/captcha-recognizer&type=Date)](https://star-history.com/#chenwei-zhao/captcha-recognizer&Date)
 
-## 捐赠
+## 加个鸡腿 🍗
 
-- 感谢支持开源项目
-- 如果项目有帮助到您，可以选择捐赠一些费用，帮助项目持续更新。
+- 如果项目有帮助到你，请给项目点一个Star，谢谢！
+- 如果你有余力，可以选择给作者加个鸡腿🍗，感谢！
 
 <img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg" width="168" alt="微信支付">
 

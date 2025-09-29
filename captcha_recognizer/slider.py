@@ -9,7 +9,7 @@ import numpy as np
 import onnxruntime as ort
 from shapely.geometry import Polygon
 
-CONF_THRESHOLD = 0.25
+CONF_THRESHOLD = 0.5
 
 IOU_THRESHOLD = 0.8
 
