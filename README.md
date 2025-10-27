@@ -203,14 +203,3 @@ MIT license
 ## Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=chenwei-zhao/captcha-recognizer&type=Date)](https://star-history.com/#chenwei-zhao/captcha-recognizer&Date)
-
-## 加个鸡腿 🍗
-
-- 如果项目有帮助到你，请给项目点一个Star，谢谢！
-- 如果你有余力，可以选择给作者加个鸡腿🍗，感谢！
-
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/wechat.jpg" width="168" alt="微信支付">
-
-<img src="https://captcha-slider.oss-cn-beijing.aliyuncs.com/payment/alipay.jpg" width="168" alt="支付宝支付">
-
-
