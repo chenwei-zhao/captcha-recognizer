@@ -1,4 +1,6 @@
 # 版本历史
+1.0.2 (2026-01-28)
+* 支持传入base64编码的图片 (Support passing in base64 encoded images)
 
 1.0.1 (2025-09-29)
 * 提高默认的置信度阈值 (Improve default confidence threshold)

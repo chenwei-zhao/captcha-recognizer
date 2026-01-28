@@ -1,3 +1,4 @@
+import base64
 import os
 import random
 import time
@@ -234,7 +235,13 @@ class Slider:
 
     @staticmethod
     def image_to_array(source: Union[str, Path, bytes, np.ndarray] = None):
-        if isinstance(source, (str, Path)):
+        if isinstance(source, str) and source.startswith('data:image'):
+            # 从Base64字符串读取
+            header, encoded = source.split(',', 1)
+            data = base64.b64decode(encoded)
+            np_arr = np.frombuffer(data, np.uint8)
+            return cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+        elif isinstance(source, (str, Path)):
             # 从文件路径读取
             return cv2.imread(str(source))
         elif isinstance(source, bytes):
@@ -795,5 +802,8 @@ if __name__ == "__main__":
     单缺口
     """
     model = Slider()
+    # base64 图片测试
+    # base64_image = 'xxx'
+    # res = model.identify(source=base64_image, show=True)
     res = model.identify(source='img_example.png', show=True)
     print('results', res)
